@@ -1,0 +1,19 @@
+{
+  "name": "windows_quick_monitor_setup_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon --exec babel-node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sander Hellesø",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3"
+  }
+}
