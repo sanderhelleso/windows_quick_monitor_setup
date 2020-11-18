@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { ROOT_PATH } from '../utils/root';
 import { readJSON } from './json_helpers';
 

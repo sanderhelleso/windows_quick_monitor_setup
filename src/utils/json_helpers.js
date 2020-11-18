@@ -1,4 +1,4 @@
-import { readFile } from './asyncFile';
+import { readFile } from './_file';
 
 export const readJSON = async path => {
   try {

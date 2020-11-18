@@ -86,6 +86,7 @@ dist
 
 .vscode/
 .prettierrc
+/src/presets/presets.json
 
 # Gatsby files
 .cache/
