@@ -4,6 +4,7 @@ import { sep } from 'path';
 
 export const readFile = util.promisify(fs.readFile);
 export const getFileStats = util.promisify(fs.stat);
+export const writeFile = util.promisify(fs.writeFile);
 
 /**
  * Builds a path with platform-specific separator

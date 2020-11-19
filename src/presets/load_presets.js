@@ -1,8 +1,9 @@
 import readConfig from '../utils/read_config';
+import createPreset from './create_presets';
 import { ROOT_PATH } from '../utils/root';
 import { getFileStats, buildPath } from '../utils/_file';
 
-export const loadPresets = async () => {
+const loadPresets = async () => {
   const config = await readConfig();
   const { presets_location, presets_name } = config;
   const presetsPath = `${ROOT_PATH}${buildPath([
@@ -15,6 +16,7 @@ export const loadPresets = async () => {
     console.log('PRESET EXISTS');
   } else {
     console.log('PRESET dont EXISTS');
+    await createPreset(presetsPath);
   }
 };
 
@@ -28,3 +30,5 @@ const presetsExist = async presetsPath => {
 
   return true;
 };
+
+export default loadPresets;
