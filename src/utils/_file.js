@@ -1,10 +1,15 @@
 import util from 'util';
 import fs from 'fs';
 import { sep } from 'path';
+import asyncExec from './asyncExec';
 
 export const readFile = util.promisify(fs.readFile);
 export const getFileStats = util.promisify(fs.stat);
 export const writeFile = util.promisify(fs.writeFile);
+
+export const runFile = async filePath => {
+  await asyncExec(`start ${filePath}`);
+};
 
 /**
  * Builds a path with platform-specific separator
