@@ -2,6 +2,7 @@ import readConfig from '../utils/read_config';
 import createPreset from './create_presets';
 import { ROOT_PATH } from '../utils/root';
 import { getFileStats, buildPath } from '../utils/_file';
+import { readJSON } from '../utils/json_helpers';
 
 const loadPresets = async () => {
   const config = await readConfig();
@@ -11,20 +12,17 @@ const loadPresets = async () => {
     presets_name
   ])}`;
 
-  const exists = await presetsExist(presetsPath);
-  if (exists) {
-    console.log('PRESET EXISTS');
-  } else {
-    console.log('PRESET dont EXISTS');
+  if (!(await presetsExist(presetsPath))) {
     await createPreset(presetsPath);
   }
+
+  return await readJSON(presetsPath);
 };
 
 const presetsExist = async presetsPath => {
   try {
     await getFileStats(presetsPath);
   } catch (error) {
-    console.log(error);
     return false;
   }
 

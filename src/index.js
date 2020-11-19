@@ -1,5 +1,6 @@
 import loadPresets from './presets/load_presets';
 
-console.log('Hello world!');
-
-loadPresets();
+(async () => {
+  const presets = await loadPresets();
+  console.log(presets);
+})();
