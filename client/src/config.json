@@ -1,0 +1,19 @@
+{
+  "presets_name": "presets.json",
+  "presets_location": "presets",
+  "presets_template": {
+    "preset_id": {
+      "name": "",
+      "favorite": false,
+      "created_at": "",
+      "modified_at": "",
+      "application_paths": []
+    }
+  },
+  "application_path_template": {
+    "path": "",
+    "name": "",
+    "description": "",
+    "monitor_location": ""
+  }
+}
