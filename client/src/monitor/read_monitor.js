@@ -1,5 +1,6 @@
 import screenres from 'screenres';
 
-export const getScreenRes = () => {
-  return screenres.get();
+export const getScreenSize = () => {
+  const [width, height ] = screenres.get();
+  return { width, height };
 };

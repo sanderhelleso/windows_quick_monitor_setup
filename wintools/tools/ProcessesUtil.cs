@@ -17,17 +17,24 @@ namespace wintools
             }
         }
 
-        public void StartProgramAndMove(String pathToProgram)
+        public void StartProgramAndMove(Application app)
         {
-            Process process = StartProgramProcess(pathToProgram);
+            Process process = StartProgramProcess(app.path);
             ScreenPositioner screenPositioner = new ScreenPositioner();
-            screenPositioner.MoveAppPositionByProcess(process);
+            screenPositioner.MoveAppPositionByProcess(process, app);
         }
 
         private Process StartProgramProcess(String pathToProgram)
         {
             Process process = GetProcsessWithStartInfo(pathToProgram);
             process.Start();
+
+            while (string.IsNullOrEmpty(process.MainWindowTitle))
+            {
+                System.Threading.Thread.Sleep(100);
+                process.Refresh();
+            }
+
             return process;
         }
 

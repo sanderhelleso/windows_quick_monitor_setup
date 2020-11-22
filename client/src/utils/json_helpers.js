@@ -8,3 +8,10 @@ export const readJSON = async path => {
     throw error;
   }
 };
+
+export const escapeJSON = jsonStr => {
+  return jsonStr.replace(/\\/g, "\\\\")
+                .replace(/\$/g, "\\$")
+                .replace(/'/g, "\\'")
+                .replace(/"/g, "\\\"");
+}

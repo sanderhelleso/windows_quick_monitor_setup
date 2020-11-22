@@ -7,13 +7,18 @@
       "favorite": false,
       "created_at": "",
       "modified_at": "",
-      "application_paths": []
+      "applications": []
     }
   },
-  "application_path_template": {
+  "application_template": {
     "path": "",
     "name": "",
     "description": "",
-    "monitor_location": ""
+    "layout_order": 1,
+    "screen_width": "",
+    "screen_height": "",
+    "using_pixel_sizing": false,
+    "using_exact_coords": false,
+    "exact_coords": { "x": 0, "y": 0}
   }
 }

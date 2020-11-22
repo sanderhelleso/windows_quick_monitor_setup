@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace wintools
 {
@@ -6,14 +8,15 @@ namespace wintools
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(string.Join('-', args));
+            Preset preset = JsonSerializer.Deserialize<Preset>(args[0]);
+            ScreenSizeHelper.setSize(preset.screen_size);
 
-            var pathFromClient = args[0];
-            var otherPathFromClient = args[1];
-            var processesUtil = new ProcessesUtil();
-            processesUtil.StartProgramAndMove(pathFromClient);
-            processesUtil.StartProgramAndMove(otherPathFromClient);
-
+            Application[] applications = preset.applications;
+            foreach (Application app in applications)
+            {
+                var processesUtil = new ProcessesUtil();
+                processesUtil.StartProgramAndMove(app);
+            }
         }
     }
 }
