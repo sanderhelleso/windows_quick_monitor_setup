@@ -7,16 +7,41 @@ namespace wintools
 {
     public class ScreenPositioner
     {
-        public void MoveAppPositionByProcess(Process process, Application app)
-        {
-            int screenWidth = ScreenSizeHelper.getWidth();
-            int screenHeight = ScreenSizeHelper.getHeight();
+        private int screenWidth;
+        private int screenHeight;
 
+        public ScreenPositioner()
+        {
+            screenWidth = ScreenSizeHelper.getWidth();
+            screenHeight = ScreenSizeHelper.getHeight();
+        }
+
+        public void MoveAppPositionByLayoutOrder(Application[] applications)
+        {
+            ProcessesUtil processesUtil = new ProcessesUtil();
+            int offset = 0;
+
+            foreach (Application app in applications)
+            {
+                Process process = processesUtil.StartProcess(app);
+                MoveAppPosition(process, app, offset);
+                offset = getOffsetPosition(app, offset);
+            }
+        }
+
+        private void MoveAppPosition(Process process, Application app, int offset)
+        {
             int width = calculateScreenUnit(screenWidth, app.screen_width);
-            int height = calculateScreenUnit(screenHeight, app.screen_height); ;
+            int height = calculateScreenUnit(screenHeight, app.screen_height);
             IntPtr id = process.MainWindowHandle;
 
-            ScreenPositioner.MoveWindow(id, 0, 0, width, height, true);
+            ScreenPositioner.MoveWindow(id, offset, 0, width, height, true);
+        }
+
+        private int getOffsetPosition(Application app, int currentOffset)
+        {
+            int offset = calculateScreenUnit(screenWidth, app.screen_width);
+            return offset + currentOffset;
         }
 
         private int calculateScreenUnit(int totalUnit, int percentOfUnit)

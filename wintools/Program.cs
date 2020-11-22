@@ -11,12 +11,8 @@ namespace wintools
             Preset preset = JsonSerializer.Deserialize<Preset>(args[0]);
             ScreenSizeHelper.setSize(preset.screen_size);
 
-            Application[] applications = preset.applications;
-            foreach (Application app in applications)
-            {
-                var processesUtil = new ProcessesUtil();
-                processesUtil.StartProgramAndMove(app);
-            }
+            ScreenPositioner screenPositioner = new ScreenPositioner();
+            screenPositioner.MoveAppPositionByLayoutOrder(preset.applications);
         }
     }
 }

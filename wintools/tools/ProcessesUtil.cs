@@ -17,16 +17,9 @@ namespace wintools
             }
         }
 
-        public void StartProgramAndMove(Application app)
+        public Process StartProcess(Application app)
         {
-            Process process = StartProgramProcess(app.path);
-            ScreenPositioner screenPositioner = new ScreenPositioner();
-            screenPositioner.MoveAppPositionByProcess(process, app);
-        }
-
-        private Process StartProgramProcess(String pathToProgram)
-        {
-            Process process = GetProcsessWithStartInfo(pathToProgram);
+            Process process = GetProcsessWithStartInfo(app.path);
             process.Start();
 
             while (string.IsNullOrEmpty(process.MainWindowTitle))
