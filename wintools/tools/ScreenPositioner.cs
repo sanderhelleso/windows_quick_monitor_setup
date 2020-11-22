@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -6,13 +7,13 @@ namespace wintools
 {
     public class ScreenPositioner
     {
-        public void MoveAppPositionByHandle(IntPtr mainWindowHandle)
+        public void MoveAppPositionByProcess(Process process)
         {
-            Thread.Sleep(1000);
-            ScreenPositioner.MoveWindow(mainWindowHandle, 0, 0, 750, 750, true);
+            IntPtr id = process.MainWindowHandle;
+            ScreenPositioner.MoveWindow(process.MainWindowHandle, 0, 0, 750, 750, true);
         }
 
-        private void GetScreenSize()
+        private void GetScreenCoords()
         {
 
         }

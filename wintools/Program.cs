@@ -6,9 +6,13 @@ namespace wintools
     {
         static void Main(string[] args)
         {
-            var pathToProgram = "notepad";
+            Console.WriteLine(string.Join('-', args));
+
+            var pathFromClient = args[0];
+            var otherPathFromClient = args[1];
             var processesUtil = new ProcessesUtil();
-            processesUtil.StartProgramAndMove(pathToProgram);
+            processesUtil.StartProgramAndMove(pathFromClient);
+            processesUtil.StartProgramAndMove(otherPathFromClient);
 
         }
     }

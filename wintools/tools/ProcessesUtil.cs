@@ -20,9 +20,8 @@ namespace wintools
         public void StartProgramAndMove(String pathToProgram)
         {
             Process process = StartProgramProcess(pathToProgram);
-            IntPtr mainWindowHandle = process.MainWindowHandle;
             ScreenPositioner screenPositioner = new ScreenPositioner();
-            screenPositioner.MoveAppPositionByHandle(mainWindowHandle);
+            screenPositioner.MoveAppPositionByProcess(process);
         }
 
         private Process StartProgramProcess(String pathToProgram)
