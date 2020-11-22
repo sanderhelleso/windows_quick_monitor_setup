@@ -41,7 +41,9 @@ namespace wintools
         private int getOffsetPosition(Application app, int currentOffset)
         {
             int offset = calculateScreenUnit(screenWidth, app.screen_width);
-            return offset + currentOffset;
+            offset = offset + currentOffset;
+            return offset;
+            //return offset > 0 ? offset - 15 : offset;
         }
 
         private int calculateScreenUnit(int totalUnit, int percentOfUnit)

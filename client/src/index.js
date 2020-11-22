@@ -16,16 +16,16 @@ import { escapeJSON } from './utils/json_helpers';
     applications: [{
       "path": 'notepad',
       "layout_order": 1,
-      "screen_width": 33.3,
+      "screen_width": 25,
       "screen_height": 100,
       "using_pixel_sizing": false,
       "using_exact_coords": false,
       "exact_coords": null
     },
     {
-      "path": 'notepad',
+      "path": 'C:/Users/Sander/AppData/Roaming/Spotify/Spotify.exe',
       "layout_order": 2,
-      "screen_width": 33.3,
+      "screen_width": 50,
       "screen_height": 100,
       "using_pixel_sizing": false,
       "using_exact_coords": false,
@@ -34,7 +34,7 @@ import { escapeJSON } from './utils/json_helpers';
     {
       "path": 'notepad',
       "layout_order": 3,
-      "screen_width": 33.3,
+      "screen_width": 25,
       "screen_height": 100,
       "using_pixel_sizing": false,
       "using_exact_coords": false,
