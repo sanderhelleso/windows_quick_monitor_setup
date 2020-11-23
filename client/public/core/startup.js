@@ -1,10 +1,12 @@
 const { app, BrowserWindow } = require('electron');
+const isDev = require("electron-is-dev");
+const path = require("path");
 
 const WINDOW_WIDTH = 600;
 const WINDOW_HEIGHT = 800;
 
 const createWindow = () => {
-    const browserWindow = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
         width: WINDOW_WIDTH,
         height: WINDOW_HEIGHT,
         webPreferences: {
@@ -12,8 +14,8 @@ const createWindow = () => {
         }
     });
 
-    browserWindow.loadFile('index.html');
-    browserWindow.webContents.openDevTools();
+    mainWindow.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`);
+    mainWindow.on("closed", () => (mainWindow = null));
 }
 
 const quit = () => {
