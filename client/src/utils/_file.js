@@ -1,13 +1,12 @@
-import util from 'util';
-import fs from 'fs';
-import { sep } from 'path';
-import asyncExec from './asyncExec';
+const util = require('util');
+const fs = require('fs');
+const { sep } = require('path');
+const { asyncExec } = require('./asyncExec');
 
-export const readFile = util.promisify(fs.readFile);
-export const getFileStats = util.promisify(fs.stat);
-export const writeFile = util.promisify(fs.writeFile);
-
-export const runCommand = async (command, path) => {
+const readFile = util.promisify(fs.readFile);
+const getFileStats = util.promisify(fs.stat);
+const writeFile = util.promisify(fs.writeFile);
+const runCommand = async (command, path) => {
   await asyncExec(`${command} ${path}`);
 };
 
@@ -16,7 +15,7 @@ export const runCommand = async (command, path) => {
  *
  * @param {Array} paths
  */
-export const buildPath = paths => {
+const buildPath = paths => {
   let buildtPath = '';
   paths.forEach((part, i) => {
     if (i !== paths.length - 1) {
@@ -28,3 +27,8 @@ export const buildPath = paths => {
 
   return buildtPath;
 };
+
+exports.readFile = readFile;
+exports.getFileStats = getFileStats;
+exports.writeFile = writeFile;
+exports.runCommand = runCommand;

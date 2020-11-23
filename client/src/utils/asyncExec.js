@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+const { exec } = require('child_process');
 
 /**
  * Executes a shell command and return it as a Promise.
@@ -16,4 +16,4 @@ const asyncExec = cmd => {
   });
 };
 
-export default asyncExec;
+exports.asyncExec = asyncExec;

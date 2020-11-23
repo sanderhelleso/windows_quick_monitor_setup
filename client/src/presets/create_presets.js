@@ -1,4 +1,4 @@
-import { writeFile } from '../utils/_file';
+const { writeFile } = require('../utils/_file');
 
 const createPresets = async presetsPath => {
   const defaultData = JSON.stringify({}, null, 2);
@@ -10,4 +10,4 @@ const createPresets = async presetsPath => {
   }
 };
 
-export default createPresets;
+exports.createPresets = createPresets;

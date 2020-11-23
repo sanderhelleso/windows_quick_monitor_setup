@@ -1,13 +1,10 @@
-import loadPresets from './presets/load_presets';
-import { getScreenSize } from './monitor/read_monitor';
-import { runCommand } from './utils/_file';
-import { escapeJSON } from './utils/json_helpers';
+const loadPresets = require('./presets/load_presets');
+const { runCommand } = require('./utils/_file');
+const { escapeJSON } = require('./utils/json_helpers');
+const { startApp } = require('./app/startup');;
 
 (async () => {
-  const presets = await loadPresets();
-  console.log(presets);
-  const screenRes = getScreenSize();
-  console.log(screenRes);
+  /*const presets = await loadPresets();
 
   const wintoolsPath = 'C:/Users/Sander/workspace/windows_quick_monitor_setup_app/wintools/'; 
 
@@ -43,5 +40,6 @@ import { escapeJSON } from './utils/json_helpers';
   });
 
   const escaped = escapeJSON(json);  
-  runCommand('dotnet run --project', wintoolsPath + ` "${escaped}"`);
+  runCommand('dotnet run --project', wintoolsPath + ` "${escaped}"`);*/
+  startApp();
 })();

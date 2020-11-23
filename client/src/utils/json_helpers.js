@@ -1,6 +1,6 @@
-import { readFile } from './_file';
+const { readFile } = require('./_file');
 
-export const readJSON = async path => {
+const readJSON = async path => {
   try {
     const data = await readFile(path);
     return JSON.parse(data);
@@ -9,9 +9,12 @@ export const readJSON = async path => {
   }
 };
 
-export const escapeJSON = jsonStr => {
+const escapeJSON = jsonStr => {
   return jsonStr.replace(/\\/g, "\\\\")
                 .replace(/\$/g, "\\$")
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "\\\"");
 }
+
+exports.readJSON = readJSON;
+exports.escapeJSON = escapeJSON;

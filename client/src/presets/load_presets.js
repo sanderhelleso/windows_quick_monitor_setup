@@ -1,8 +1,8 @@
-import readConfig from '../utils/read_config';
-import createPreset from './create_presets';
-import { ROOT_PATH } from '../utils/root';
-import { getFileStats, buildPath } from '../utils/_file';
-import { readJSON } from '../utils/json_helpers';
+const readConfig = require('../utils/read_config');
+const createPreset = require('./create_presets');
+const { ROOT_PATH } = require('../utils/root');
+const { getFileStats, buildPath } = require('../utils/_file');
+const { readJSON } = require('../utils/json_helpers');
 
 const loadPresets = async () => {
   const config = await readConfig();
@@ -29,4 +29,4 @@ const presetsExist = async presetsPath => {
   return true;
 };
 
-export default loadPresets;
+exports.loadPresets = loadPresets;

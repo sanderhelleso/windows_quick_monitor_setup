@@ -1,5 +1,5 @@
-import { ROOT_PATH } from './root';
-import { readJSON } from './json_helpers';
+const { ROOT_PATH } = require('./root');
+const { readJSON } = require('./json_helpers');
 
 const configFile = 'config.json';
 const configPath = `${ROOT_PATH}/${configFile}`;
@@ -15,4 +15,4 @@ const readConfig = async () => {
   }
 };
 
-export default readConfig;
+exports.readConfig = readConfig;
